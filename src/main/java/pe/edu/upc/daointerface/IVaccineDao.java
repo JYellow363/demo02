@@ -7,4 +7,6 @@ import pe.edu.upc.entity.Vaccine;
 public interface IVaccineDao {
 	public void insert(Vaccine vac);
 	public List<Vaccine> list();
+	
+	public List<Vaccine> findByNameVaccine(Vaccine vac);
 }

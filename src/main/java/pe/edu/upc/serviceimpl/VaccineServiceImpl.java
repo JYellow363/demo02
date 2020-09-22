@@ -32,5 +32,11 @@ public class VaccineServiceImpl implements IVaccineService, Serializable {
 		return vD.list();
 	}
 
+	@Override
+	public List<Vaccine> findByNameVaccine(Vaccine vac) {
+		// TODO Auto-generated method stub
+		return vD.findByNameVaccine(vac);
+	}
+
 	
 }

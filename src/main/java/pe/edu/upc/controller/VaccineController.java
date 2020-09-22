@@ -76,7 +76,18 @@ public class VaccineController {
 			System.out.println(e.getMessage());
 		}
 	}
-
+	
+	public void findByName() {
+		try {
+			if(vaccine.getNameVaccine().isEmpty()) {
+				this.list();
+			} else {
+				listVaccines = this.vS.findByNameVaccine(this.getVaccine()); 
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
 
 	// get y set
 	public Laboratory getLaboratory() {

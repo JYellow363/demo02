@@ -42,6 +42,20 @@ public class VaccineDaoImpl implements Serializable, IVaccineDao {
 		return lista;
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Vaccine> findByNameVaccine(Vaccine vac) {
+		List<Vaccine> lista = new ArrayList<Vaccine>();
+		try {
+			Query q = em.createQuery("from Vaccine v where v.nameVaccine like ?1");
+			q.setParameter(1,"%"+ vac.getNameVaccine()+"%");
+			lista = (List<Vaccine>) q.getResultList();
+		} catch (Exception e) {
+			System.out.println("Error al buscar vacuna");
+		}
+		return lista;
+	}
+
 	
 
 }
