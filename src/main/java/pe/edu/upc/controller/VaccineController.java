@@ -16,19 +16,18 @@ import pe.edu.upc.serviceinterface.IVaccineService;
 @Named
 @RequestScoped
 public class VaccineController {
-
 	@Inject
 	private IVaccineService vS;
-	
 	@Inject
 	private ILaboratoryService lS;
-	
+
 	private Laboratory laboratory;
 	private Vaccine vaccine;
-	
+
 	List<Laboratory> listLaboratories;
 	List<Vaccine> listVaccines;
-	
+
+	// Constructor
 	@PostConstruct
 	public void init() {
 		this.laboratory = new Laboratory();
@@ -38,13 +37,15 @@ public class VaccineController {
 		this.list();
 		this.listLaboratories();
 	}
-	
+
+	// métodos personalizados
+
 	public String newVaccine() {
 		this.setVaccine(new Vaccine());
 		listLaboratories = lS.list();
 		return "vaccine.xhtml";
 	}
-	
+
 	public void insert() {
 		try {
 
@@ -55,15 +56,19 @@ public class VaccineController {
 			System.out.println(e.getMessage());
 		}
 	}
-	
+
 	public void list() {
 		try {
-			listVaccines=vS.list();
+			listVaccines = vS.list();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 	}
-	
+
+	public void cleanVaccine() {
+		this.init();
+	}
+
 	public void listLaboratories() {
 		try {
 			listLaboratories = lS.list();
@@ -71,11 +76,9 @@ public class VaccineController {
 			System.out.println(e.getMessage());
 		}
 	}
-	
-	public void cleanVaccine() {
-		this.init();
-	}
 
+
+	// get y set
 	public Laboratory getLaboratory() {
 		return laboratory;
 	}

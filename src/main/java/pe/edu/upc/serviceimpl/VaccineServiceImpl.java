@@ -14,22 +14,23 @@ import pe.edu.upc.serviceinterface.IVaccineService;
 @Named
 @RequestScoped
 public class VaccineServiceImpl implements IVaccineService, Serializable {
-
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
 	@Inject
 	private IVaccineDao vD;
 
+	@Override
 	public void insert(Vaccine vac) {
 		vD.insert(vac);
 	}
 
+	@Override
 	public List<Vaccine> list() {
 		// TODO Auto-generated method stub
 		return vD.list();
 	}
 
+	
 }

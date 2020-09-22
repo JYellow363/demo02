@@ -26,6 +26,46 @@ public class Laboratory implements Serializable {
 	@Column(name = "adressLaboratory", nullable = false, length = 45)
 	private String adressLaboratory;
 	private Date birthdateLaboratory;
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((adressLaboratory == null) ? 0 : adressLaboratory.hashCode());
+		result = prime * result + ((birthdateLaboratory == null) ? 0 : birthdateLaboratory.hashCode());
+		result = prime * result + idLaboratory;
+		result = prime * result + ((nameLaboratory == null) ? 0 : nameLaboratory.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Laboratory other = (Laboratory) obj;
+		if (adressLaboratory == null) {
+			if (other.adressLaboratory != null)
+				return false;
+		} else if (!adressLaboratory.equals(other.adressLaboratory))
+			return false;
+		if (birthdateLaboratory == null) {
+			if (other.birthdateLaboratory != null)
+				return false;
+		} else if (!birthdateLaboratory.equals(other.birthdateLaboratory))
+			return false;
+		if (idLaboratory != other.idLaboratory)
+			return false;
+		if (nameLaboratory == null) {
+			if (other.nameLaboratory != null)
+				return false;
+		} else if (!nameLaboratory.equals(other.nameLaboratory))
+			return false;
+		return true;
+	}
 
 	public Laboratory() {
 		super();

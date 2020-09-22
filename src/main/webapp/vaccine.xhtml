@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="master.xhtml">
+
+	<ui:define name="title">
+        .:Registro de Vacunas:.
+    </ui:define>
+
+	<ui:define name="titleCont">
+		<span>Vacunas</span>
+	</ui:define>
+
+	<ui:define name="content">
+
+		<h:form>
+
+
+			<h:outputLabel for="idVaccine" value="Código"
+				styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="idVaccine"
+				styleClass="form-control" value="#{vaccineController.vaccine.idVaccine}"
+				required="true" />
+			<h:outputLabel for="vacuna" value="Vacuna" styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="vacuna" styleClass="form-control"
+				value="#{vaccineController.vaccine.nameVaccine}" maxlength="30"
+				required="true" />
+			<h:outputLabel for="price" value="Precio" styleClass="control-label" />
+			<p:inputText autocomplete="off" id="price" styleClass="form-control"
+				value="#{vaccineController.vaccine.priceVaccine}" required="true" />
+			<p:outputLabel for="cboLaboratory" value="Laboratorio" />
+			<p:selectOneMenu id="cboLaboratory"
+				value="#{vaccineController.vaccine.laboratory}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{vaccineController.listLaboratories}" var="a"
+					itemLabel="#{a.nameLaboratory}" itemValue="#{a}" />
+			</p:selectOneMenu>
+			<br />
+
+			<p:commandButton value="Grabar"
+				actionListener="#{vaccineController.insert()}"
+				styleClass="btn btn-primary " update="@form"
+				action="listVaccine?faces-redirect=true" />
+			<p:commandButton value="Cancelar"
+				action="listVaccine?faces-redirect=true" immediate="true"
+				styleClass="btn btn-default" ajax="false" />
+
+
+		</h:form>
+	</ui:define>
+
+	<ui:define name="footerCont">
+
+	</ui:define>
+</ui:composition>
+</html>
