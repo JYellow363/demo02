@@ -28,14 +28,22 @@ public class VaccineServiceImpl implements IVaccineService, Serializable {
 
 	@Override
 	public List<Vaccine> list() {
-		// TODO Auto-generated method stub
 		return vD.list();
 	}
 
 	@Override
 	public List<Vaccine> findByNameVaccine(Vaccine vac) {
-		// TODO Auto-generated method stub
 		return vD.findByNameVaccine(vac);
+	}
+
+	@Override
+	public void delete(int idVaccine) {
+		vD.delete(idVaccine);
+	}
+
+	@Override
+	public void update(Vaccine vac) {
+		vD.update(vac);
 	}
 
 	

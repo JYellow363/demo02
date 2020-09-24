@@ -88,7 +88,30 @@ public class VaccineController {
 			System.out.println(e.getMessage());
 		}
 	}
-
+	
+	public void delete (Vaccine vc) {
+		try {
+			vS.delete(vc.getIdVaccine());
+			this.list();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	
+	public String goUpdate(Vaccine vc) {
+		this.setVaccine(vc);
+		return "updateVaccine.xhtml";
+	}
+	
+	public void update() {
+		try {
+			vS.update(vaccine);
+			this.list();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	
 	// get y set
 	public Laboratory getLaboratory() {
 		return laboratory;

@@ -55,6 +55,28 @@ public class VaccineDaoImpl implements Serializable, IVaccineDao {
 		}
 		return lista;
 	}
+	
+	@Transactional
+	@Override
+	public void delete(int idVaccine) {
+		Vaccine v = new Vaccine();
+		try {
+			v = em.getReference(Vaccine.class,  idVaccine);
+			em.remove(v);
+		} catch (Exception e) {
+			System.out.println("Error al eliminar vacuna");
+		}
+	}
+	
+	@Transactional
+	@Override
+	public void update(Vaccine vac) {
+		try {
+			em.merge(vac);
+		} catch (Exception e) {
+			System.out.println("Error al editar vacuna");
+		}
+	}
 
 	
 

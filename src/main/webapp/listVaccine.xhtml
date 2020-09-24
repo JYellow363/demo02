@@ -65,6 +65,17 @@
 								sortBy="#{va.laboratory.nameLaboratory}">
 								<h:outputText value="#{va.laboratory.nameLaboratory}" />
 							</p:column>
+							<p:column headerText="Operación" style="text-align:center">
+								<h:commandLink action="#{vaccineController.goUpdate(va)}">
+									<i class="fa fa-pencil-alt"></i>
+								</h:commandLink>
+							</p:column>
+							<p:column headerText="Operación" style="text-align:center">
+								<h:commandLink action="#{vaccineController.delete(va)}">
+									<i class="fas fa-trash-alt"></i>
+								</h:commandLink>
+							</p:column>
+							
 						</p:dataTable>
 					</div>
 				</div>
